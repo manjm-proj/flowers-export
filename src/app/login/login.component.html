@@ -1,0 +1,29 @@
+﻿<div style="height: auto; width: 500px; border: 1px; background-color:#FFE6EE; padding: 16px; border-radius: 16px; border-color: whitesmoke; z-index: 1px;">
+<h5 style="text-align : center">Welcome!</h5>
+<h2 style="text-align : center">Bharathwaj Flowers</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+        <a routerLink="/register" class="btn btn-link">Register</a>
+        <a style="margin-left: 172px" routerLink="/forgotPassword" class="btn btn-link">Forgot Password</a>
+    </div>
+</form>
+</div>
+<div style="text-align:center; padding:8px;">Copyright © 2020-2030 @ Bharathwaj flowers export</div>

@@ -6,7 +6,7 @@ import { MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnack
 import { DATA } from './../data/mock-data';
 import { DialogComponent } from '../dialog/dialog.component';
 import { ConfirmDialogModel } from '../confirm-dialog/confirm-dialog.component';
-import { ConfirmDialogComponent } from './../../../../../../../create-project/src/app/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 export interface Transaction {
   number: number;

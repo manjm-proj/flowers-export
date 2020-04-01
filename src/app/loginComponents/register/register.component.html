@@ -1,4 +1,15 @@
-﻿<h2>Register</h2>
+﻿<style>
+    .jumbotron{
+     height:94vh; background-size:cover; width:auto;
+     background-image:url('src/app/assets/images/images.jpg');
+     background-position:50% 50%;
+   }
+</style>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+<h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="email">E-mail</label>
@@ -30,3 +41,6 @@
         <a routerLink="/login" class="btn btn-link">Cancel</a>
     </div>
 </form>
+</div>
+</div>
+</div>

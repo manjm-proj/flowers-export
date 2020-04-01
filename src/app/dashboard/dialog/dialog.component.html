@@ -1,0 +1,68 @@
+<h1 mat-dialog-title> {{title}} </h1>
+<mat-dialog-content>
+  <form [formGroup]="register">
+  <p *ngIf="canDisplay">
+    <mat-form-field appearance="standard">
+      <mat-label>Number</mat-label>
+      <input matInput type="number" formControlName="number">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>தேதி</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</p>
+<p>
+  <mat-form-field class="example-full-width" appearance="standard">
+    <mat-label>விபரம்</mat-label>
+    <input type="text"
+           aria-label="Number"
+           matInput
+           formControlName="details"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="standard">
+    <mat-label>எடை</mat-label>
+    <input matInput type="number" formControlName="weight">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="standard" >
+    <mat-label>விலை</mat-label>
+    <input matInput type="number" formControlName="price">
+    <span matPrefix>₹&nbsp;</span>
+    <span matSuffix>.000</span>
+  </mat-form-field>
+</p>
+<p >
+  <mat-form-field appearance="standard" >
+    <mat-label>வரவு</mat-label>
+    <input matInput type="number" formControlName="income">
+    <span matPrefix>₹&nbsp;</span>
+    <span matSuffix>.000</span>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="standard" >
+    <mat-label>பற்று</mat-label>
+    <input matInput type="number" formControlName="pattru">
+    <span matPrefix>₹&nbsp;</span>
+    <span matSuffix>.000</span>
+  </mat-form-field>
+</p>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>ரத்துசெய்</button>
+  <button mat-button [mat-dialog-close]="register.getRawValue()" cdkFocusInitial color="primary" >சேமி</button>
+</mat-dialog-actions>

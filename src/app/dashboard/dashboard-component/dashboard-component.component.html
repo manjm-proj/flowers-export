@@ -1,0 +1,99 @@
+<div class="setMargin">
+  <button mat-raised-button color="primary" (click)="openAddDialog()">+ புதிதாக சேர்க்க</button>
+  <span>
+    <mat-form-field style="padding-left: 100px;">
+      <mat-label> முதல் </mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="monthStartDay">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <span  style="padding-left: 20px;"> ~ </span>
+    <mat-form-field  style="padding-left: 20px;">
+      <mat-label> வரை </mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="monthEndDay">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <button color="primary" mat-raised-button style="margin-left: 20px;">
+      <mat-icon >search</mat-icon>
+      தேடு
+    </button>
+  </span>
+</div>
+<marquee>புல்லன்விடுதி, PULLANVIDUTHI(0134) - ( {{monthStartDay | date: 'dd/MM/yyyy'}} முதல் {{monthEndDay | date: 'dd/MM/yyyy'}} வரை உள்ள தகவல்கள் கீழே காட்டப்பட்டுள்ளன.)</marquee>
+<div  class="setMargin example-table-container">
+  <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> எண் </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor right"> {{transaction.number}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> தேதி </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor"> {{transaction.date}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> விபரம் </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor"> {{transaction.details}} </td>
+      <td mat-footer-cell *matFooterCellDef> Total </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef class="headerColor right"> எடை </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor"> {{transaction.weight}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{getTotalWeight()}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> விலை </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor right"> {{transaction.price | currency: 'INR'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency: 'INR'}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="income">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> வரவு </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor right"> {{transaction.weight * transaction.price | currency: 'INR'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{getTotalIncome() | currency: 'INR'}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pattru">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> பற்று </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor right"> {{transaction.pattru}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="headerColor"> </th>
+      <td mat-cell *matCellDef="let transaction" class="rowColor">
+        <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="openEditDialog(transaction)">
+            <mat-icon >edit</mat-icon>
+          </button>
+        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="openConfirmDialog(transaction)">
+            <mat-icon >delete</mat-icon>
+          </button>
+        </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="disclaimer">
+      <td mat-footer-cell *matFooterCellDef colspan="8">
+        Please note that the cost of items displayed are completely and totally made up.
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns, sticky: true "></tr>
+  </table>
+</div>

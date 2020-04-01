@@ -24,6 +24,7 @@
         "bootstrap": "^4.4.1",
         "core-js": "^3.6.4",
         "material-design-icons": "^3.0.1",
+        "ngx-avatar": "^3.7.0",
         "rxjs": "^6.5.4",
         "zone.js": "^0.10.3"
     },

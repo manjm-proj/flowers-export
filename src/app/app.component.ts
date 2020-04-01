@@ -21,4 +21,9 @@ export class AppComponent {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
     }
+
+    clickOnAvatar(event) {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    }
 }

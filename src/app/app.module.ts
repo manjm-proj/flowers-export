@@ -28,6 +28,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DashboardComponent } from './dashboard/dashboard-component/dashboard-component.component';
 import { ConfirmDialogComponent } from './dashboard/confirm-dialog/confirm-dialog.component';
 import { DialogComponent } from './dashboard/dialog/dialog.component';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ BrowserModule,
         MatAutocompleteModule,
         MatIconModule,
         MatPaginatorModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        AvatarModule
     ],
     declarations: [
         AppComponent,

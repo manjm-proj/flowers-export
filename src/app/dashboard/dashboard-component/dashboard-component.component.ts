@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit{
   @ViewChild(MatTable, {static: false}) table : MatTable<Transaction[]>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   displayedColumns: string[] = [ 'date', 'details', 'weight', 'price', 'income', 'pattru', 'actions'];
-  transactions: Transaction[] = DATA;
   datasource: MatTableDataSource<Transaction>;
   actionButtonLabel: string = 'நீக்கு';
   action: boolean = true;
@@ -56,7 +55,7 @@ export class DashboardComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe( (result: Transaction) => {
       let addedData = result;
-      addedData.number = this.transactions.length + 1;
+      addedData.number = this.datasource.data.length + 1;
       addedData.date = new Date(addedData.date).toDateString();
       addedData.income = addedData.weight*addedData.price;
       addedData.pattru = 0;
@@ -74,7 +73,7 @@ export class DashboardComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe((result: Transaction) => {
-      this.transactions.forEach(value => {
+      this.datasource.data.forEach(value => {
         if(value.number === result.number) {
           value.income = result.weight * result.price;
           value.weight = result.weight;
@@ -88,16 +87,16 @@ export class DashboardComponent implements OnInit{
 
   getTotalWeight() {
     let totalWeight: number = 0;
-    this.transactions.forEach(t =>  totalWeight += t.weight);
+    this.datasource.data.forEach(t =>  totalWeight += t.weight);
     return totalWeight;
   }
 
   getTotalCost() {
-    return this.transactions.map(t => t.price).reduce((acc, value) => acc + value, 0);
+    return this.datasource.data.map(t => t.price).reduce((acc, value) => acc + value, 0);
   }
 
   getTotalIncome() {
-    return this.transactions.map(t => t.weight*t.price).reduce((acc, value) => acc + value, 0);
+    return this.datasource.data.map(t => t.weight*t.price).reduce((acc, value) => acc + value, 0);
   }
 
   openSnackBar(message: string) {

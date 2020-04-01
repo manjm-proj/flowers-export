@@ -1,11 +1,11 @@
 ﻿<!-- nav -->
 
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <div style="margin-left: 950%;">
-        <a class="nav-item nav-link" (click)="logout()">Logout</a></div>
-    </div>
+<nav class="navbar navbar-dark bg-dark" *ngIf="currentUser">
+        <span class="navbar-brand mb-0 h1">புல்லன்விடுதி</span>
+        <form class="form-inline">
+            <ngx-avatar [name]="currentUser.username"  [value]="currentUser.username"  [round]="true" (clickOnAvatar)="clickOnAvatar($event)"></ngx-avatar>
+            <!-- <a class="nav-item nav-link" (click)="logout()">Logout</a> -->
+        </form>
 </nav>
 
 <!-- main app container -->

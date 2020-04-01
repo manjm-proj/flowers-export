@@ -1,3 +1,49 @@
+<style>
+  table {
+    width: 99%;
+  }
+  
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+  
+  .headerColor {
+    background-color: #8282ce !important;
+    font-weight: bold;
+  }
+  
+  .rowColor {
+    background-color: rgba(0, 0, 0, 0.14) !important;
+  }
+  
+  .setMargin {
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+  
+  .mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0px !important;
+  }
+  
+  .mat-footer-row {
+    background-color: pink;
+  }
+  
+  marquee {
+    background-color: #c1eac1;
+    font-weight: bold;
+  }
+  
+  .mat-column-date {
+    width: 250px;
+  }
+  
+  .mat-column-details {
+    width: 700px;
+  }
+  
+</style>
+
 <div class="setMargin">
   <button mat-raised-button color="primary" (click)="openAddDialog()">+ புதிதாக சேர்க்க</button>
   <span>
@@ -21,7 +67,7 @@
   </span>
 </div>
 <marquee>புல்லன்விடுதி, PULLANVIDUTHI(0134) - ( {{monthStartDay | date: 'dd/MM/yyyy'}} முதல் {{monthEndDay | date: 'dd/MM/yyyy'}} வரை உள்ள தகவல்கள் கீழே காட்டப்பட்டுள்ளன.)</marquee>
-<div  class="setMargin example-table-container">
+<div  class="setMargin">
   <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
     <ng-container matColumnDef="number">
       <th mat-header-cell *matHeaderCellDef class="headerColor"> எண் </th>
